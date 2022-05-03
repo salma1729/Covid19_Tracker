@@ -1,0 +1,121 @@
+
+* {
+  margin: 0;
+}
+
+body {
+  background-image: url("covid1.webp");
+  background-size: 1520px 1200px;
+}
+
+.app {
+  display: flex;
+  justify-content: space-between;
+  /* background-color: rgba(245, 245, 245, 0.748); */
+  padding: 20px;
+  margin-left: 20px;
+}
+
+.app_dropdown {
+  background-color:#e3f2f7;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  justify-content:space-between;
+  width: 100%;
+}
+
+.header > h1 {
+  color: #fc3c3c;
+  font-size: 2rem;
+}
+
+.app_stats {
+  display: flex;
+  justify-content: space-between;
+}
+
+ .app_left {
+ width: 57%; 
+} 
+.app_line{
+  /* display: flex; */
+  /* justify-content: flex-start; */
+  width: 95%;
+  height: 87%;
+  margin-top: 10px;
+  margin-right: 15px;
+  padding-right: 5px;
+}
+.parent{
+  margin-top: 30px;
+  width: 100%;
+}
+ h2{
+  text-align: center;
+  margin-bottom: 20px;
+}
+.app_chart1{
+  width: 80%;
+    height: 400px;  
+    overflow: none;
+}
+.app_chart{
+  width: 100%;
+    height: 400px;
+}
+.helper{
+  display: flex;
+justify-content: center;
+margin-bottom: 20px;
+}
+.app__information{
+  flex-grow: 1;
+  display: flex;
+}
+.table{
+  flex-grow: 1;
+}
+.app__information > h3 {
+  color: #6a5d5d;
+  font-weight: 400;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.app__information > h3:last-of-type {
+  margin-top: 1rem;
+}
+.app_right{
+  height: 480px;
+  width: 35%;
+} 
+
+.app_right .MuiCardContent-root{
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+@media (max-width: 890px) {
+  .app {
+    flex-direction: column;
+    margin: 0px;
+  }
+  .app_left{
+    width: 100%;
+  }
+  .app_right{
+    width: 100%;
+  }
+  .helper{
+    justify-content: start;
+    width: 100%;
+  }
+  .app_chart1{
+    width: 100%;
+    height: 400px;
+  }
+}
