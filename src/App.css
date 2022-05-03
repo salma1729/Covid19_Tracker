@@ -27,13 +27,18 @@ body {
   justify-content:space-between;
   width: 100%;
 }
-
-.header > h1 {
+.colorChange{
+  color:  #fc3c3c;
+  font-size: 1.2rem;
+}
+.header> .s1 > h1 {
   color: #fc3c3c;
   font-size: 2rem;
+  margin-bottom: 6px;
 }
 
 .app_stats {
+  margin-top: 35px;
   display: flex;
   justify-content: space-between;
 }

@@ -16,7 +16,7 @@ function App() {
   const [tableData, setTableData] = useState([]);
   const [caseType, setCaseType] = useState("Confirmed");
   const [change, setChange] = useState(['Confirmed', 'Deaths', 'Recovered']);
-
+  const[date,setDate]=useState("");
   useEffect(() => {
     async function getApistates1() {
       
@@ -31,12 +31,14 @@ function App() {
       const myData1 = await jsondata1.json();
       const indData = myData1.Countries[77];
       const temp = [];
+      console.log(indData)
       temp['Confirmed'] = [indData.NewConfirmed, indData.TotalConfirmed]
       temp['Recovered'] = [indData.NewConfirmed, indData.NewConfirmed - indData.TotalDeaths]
       temp['Deaths'] = [indData.NewDeaths, indData.TotalDeaths]
       setInd(temp);
       setSpecificState(temp);
-
+      const date1=indData.Date.split('T')[0];
+      setDate(date1);
       // const options2 = {
       //   method: 'GET',
       //   headers: {
@@ -74,7 +76,7 @@ function App() {
       })
      
      const indData1=[]
-      console.log("Ind data is",indData1);
+      console.log("Ind data is",d);
       setStates(d);
       const sData = []
       for (var key in d) {
@@ -109,7 +111,10 @@ function App() {
       <div className="app">
         <div className="app_left">
           <div className="header">
+            <div className="s1">
             <h1>Covid19 Tracker</h1>
+            <div className="colorChange"> Last Updated on: {date}</div>
+            </div>
             <FormControl className="app_dropdown">
               <Select variant="outlined" onChange={OnstateChange} value={myState}>
                 < MenuItem value="India"> India</MenuItem>
@@ -118,7 +123,7 @@ function App() {
                 ))}
 
               </Select>
-            </FormControl>
+            </FormControl> 
           </div>
           <div className="app_stats">
             {specificState.Confirmed ? <InfoBox
