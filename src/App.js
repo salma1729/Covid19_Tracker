@@ -19,35 +19,21 @@ function App() {
   const[date,setDate]=useState("");
   useEffect(() => {
     async function getApistates1() {
-      
-      const options1 = {
-        method: 'GET',
-        headers: {
-          'X-RapidAPI-Host': 'covid-19-fastest-update.p.rapidapi.com',
-          'X-RapidAPI-Key': '2f863f6372msh54270da90c0501bp1cf549jsn79823af2b21f'
+      const temp1 = await fetch('https://api.covid19api.com/country/india')
+      const temp2= await temp1.json();
+      let l1,l2,l3,date;
+      let temp=[];
+      temp2.forEach((curr)=>{
+        if(l1){
+          temp['Confirmed'] = [curr['Confirmed']-l1,curr['Confirmed'] ];
+          temp['Deaths'] = [curr['Deaths']-l2,curr['Deaths'] ];
         }
-      };
-      const jsondata1 = await fetch('https://covid-19-fastest-update.p.rapidapi.com/summary', options1);
-      const myData1 = await jsondata1.json();
-      const indData = myData1.Countries[77];
-      const temp = [];
-      console.log(indData)
-      temp['Confirmed'] = [indData.NewConfirmed, indData.TotalConfirmed]
-      temp['Recovered'] = [indData.NewConfirmed, indData.NewConfirmed - indData.TotalDeaths]
-      temp['Deaths'] = [indData.NewDeaths, indData.TotalDeaths]
+        l1=curr['Confirmed'];
+        l2=curr['Deaths'];
+      })
+      temp['Recovered'] = [temp['Confirmed'][0], temp['Confirmed'][0] - temp['Deaths'][1]]
       setInd(temp);
       setSpecificState(temp);
-      const date1=indData.Date.split('T')[0];
-      setDate(date1);
-      // const options2 = {
-      //   method: 'GET',
-      //   headers: {
-      //     'X-RapidAPI-Host': 'covid-19-fastest-update.p.rapidapi.com',
-      //     'X-RapidAPI-Key': '2f863f6372msh54270da90c0501bp1cf549jsn79823af2b21f'
-      //   }
-      // };
-      // const temp3 = await fetch('https://covid-19-fastest-update.p.rapidapi.com/live/country/india/status/confirmed/date/2020-04-11T13:13:30Z', options2);
-
       const temp3 = await fetch('https://api.covid19api.com/live/country/India');
       const temp4 = await temp3.json();
       const states1 = [...new Set(
@@ -69,14 +55,14 @@ function App() {
               t9 = cur[st] - lastpoint
             }
             lastpoint = cur[st];
+            date=cur['Date'].split('T')[0];
           })
           c[st] = [t9, lastpoint];
         })
         d[cur] = c;
       })
-     
+      setDate(date); 
      const indData1=[]
-      console.log("Ind data is",d);
       setStates(d);
       const sData = []
       for (var key in d) {

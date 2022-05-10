@@ -45,7 +45,7 @@ function Map({mstates , casesType,...props}) {
           'X-RapidAPI-Key': '2f863f6372msh54270da90c0501bp1cf549jsn79823af2b21f'
         }
       };
-      const temp = await fetch('https://covid-19-fastest-update.p.rapidapi.com/country/india', options);
+      const temp = await fetch('https://api.covid19api.com/country/india', options);
       const temp2 = await temp.json();
       let lastpoint1;
       const d1={};
@@ -72,10 +72,8 @@ function Map({mstates , casesType,...props}) {
           'X-RapidAPI-Key': '2f863f6372msh54270da90c0501bp1cf549jsn79823af2b21f'
         }
       };
-      const temp3 = await fetch('https://covid-19-fastest-update.p.rapidapi.com/live/country/india',options1);
+      const temp3 = await fetch('https://api.covid19api.com/live/country/India',options1);
       const temp4 = await temp3.json();
-      // const temp3 = await fetch('https://api.covid19api.com/live/country/India');
-      // const temp4 = await temp3.json();
       let lastpoint=0;
       temp4.forEach((ele)=>{
         ele['Recovered']=ele['Confirmed']-ele['Active']+lastpoint
